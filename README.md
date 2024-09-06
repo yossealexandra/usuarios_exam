@@ -34,4 +34,4 @@ El proyecto se basa en Spring boot y se encarga de crear un usuario.
 * Ejecutar el servicio según la API Rest documentada en Swagger.
 
 ## 4.- Diagramación
-* El diagrama de clases (Clase extendida aún no implementada) se encuentra en directorio raíz del proyecto.
+* El diagrama de clases se encuentra en directorio raíz del proyecto.
