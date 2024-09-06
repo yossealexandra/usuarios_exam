@@ -33,7 +33,7 @@ public class Users {
     @Column(name="last_login")
     private LocalDate lastLogin;
 
-    private UUID token;
+    private String token;
 
     @Column(name="is_active")
     private boolean isActive;

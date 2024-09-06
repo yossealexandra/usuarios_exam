@@ -20,7 +20,7 @@ public class UserResponseDto {
 
     private LocalDate lastLogin;
 
-    private UUID token;
+    private String token;
 
     private boolean isActive;
 

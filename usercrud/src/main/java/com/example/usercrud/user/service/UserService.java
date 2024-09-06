@@ -47,7 +47,8 @@ public class UserService {
         userRequest.setCreated(LocalDate.now());
         userRequest.setLastLogin(user.getCreated());
         userRequest.setModified(LocalDate.now());
-        userRequest.setToken(UUID.randomUUID());
+        userRequest.setToken(UUID.randomUUID().toString());
+        userRequest.setActive(true);
         if (!user.getPhones().isEmpty()) userRequest.setPhones(build(user.getPhones()));
 
         this.userRepository.save(userRequest);
