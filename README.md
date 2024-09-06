@@ -16,7 +16,7 @@ El proyecto se basa en Spring boot y se encarga de crear un usuario.
 
 ### 2.2 Pasos previos
 * Crear una carpeta local para descargar fuente del proyecto allí.
-* Clonar el proyecto desde GitHub de esta ruta: git clone https://github.com/yossealexandra/projectBase2-exam.git
+* Clonar el proyecto desde GitHub de esta ruta: git clone https://github.com/yossealexandra/usuarios-exam.git
 * Abrir el proyecto desde ide.
 
 ### 2.3 Configuración de la Base de Datos
