@@ -23,7 +23,7 @@ public class UserDto {
 
     @NotNull
     @Size(min = 5, max = 20)
-    //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,20}$", message = "La contraseña no cumple con el formato requerido")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z]).{5,20}$", message = "La contraseña no cumple con el formato requerido")
     private String password;
 
     private LocalDate created;
