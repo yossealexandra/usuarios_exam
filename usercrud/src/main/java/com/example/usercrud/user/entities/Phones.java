@@ -2,6 +2,9 @@ package com.example.usercrud.user.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
@@ -13,7 +16,8 @@ import java.util.UUID;
 public class Phones {
 
     @Id
-    private UUID id;
+    @UuidGenerator
+    private String id;
 
     private String number;
 
@@ -23,10 +27,12 @@ public class Phones {
     @Column(name="city_code")
     private String cityCode;
 
-    @ManyToOne(targetEntity = Users.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name="users_id", nullable = true)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Users users;
 
     public Phones(){
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
     }
 }

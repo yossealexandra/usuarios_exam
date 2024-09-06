@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 import lombok.*;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -17,9 +17,8 @@ import java.util.UUID;
 public class Users {
 
     @Id
-    @GeneratedValue(generator ="UUID")
-    @Column(name ="id", updatable = false, nullable = false)
-    private UUID id;
+    @UuidGenerator
+    private String id;
 
     private String name;
 
@@ -38,7 +37,7 @@ public class Users {
     @Column(name="is_active")
     private boolean isActive;
 
-    @OneToMany(targetEntity = Phones.class, fetch = FetchType.LAZY, mappedBy = "users")
+    @OneToMany(targetEntity = Phones.class, fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
     private List<Phones> phones;
 
 }

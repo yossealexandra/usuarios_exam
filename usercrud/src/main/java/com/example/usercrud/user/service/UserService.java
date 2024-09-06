@@ -40,7 +40,7 @@ public class UserService {
             response.put("message:", "El correo ya esta registrado");
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
-        userRequest.setId(UUID.randomUUID());
+        userRequest.setId(UUID.randomUUID().toString());
         userRequest.setName(user.getName());
         userRequest.setEmail(user.getEmail());
         userRequest.setPassword(encoder.encode(user.getPassword()));
