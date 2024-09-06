@@ -2,6 +2,7 @@ package com.example.usercrud.user.service;
 
 import com.example.usercrud.user.controller.dto.PhoneDto;
 import com.example.usercrud.user.controller.dto.UserDto;
+import com.example.usercrud.user.controller.dto.UserResponseDto;
 import com.example.usercrud.user.entities.Phones;
 import com.example.usercrud.user.entities.Users;
 import com.example.usercrud.user.persistence.PhoneRepository;
@@ -46,6 +47,7 @@ public class UserService {
         userRequest.setCreated(LocalDate.now());
         userRequest.setLastLogin(user.getCreated());
         userRequest.setModified(LocalDate.now());
+        userRequest.setToken(UUID.randomUUID());
         if (!user.getPhones().isEmpty()) userRequest.setPhones(build(user.getPhones()));
 
         this.userRepository.save(userRequest);
@@ -54,16 +56,16 @@ public class UserService {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    private Users mapResponse(Users user){
+    private UserResponseDto mapResponse(Users user){
+        UserResponseDto res = new UserResponseDto();
 
-        return Users.builder()
-                .id(user.getId())
-                .created(user.getCreated())
-                .modified(user.getModified())
-                .lastLogin(user.getLastLogin())
-                .token(user.getToken())
-                .isActive(user.isActive())
-                .build();
+        res.setId(user.getId());
+        res.setCreated(user.getCreated());
+        res.setModified(user.getModified());
+        res.setLastLogin(user.getLastLogin());
+        res.setToken(user.getToken());
+
+        return res;
     }
 
     private List<Phones> build(List<PhoneDto> phones){
